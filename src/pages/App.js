@@ -5,14 +5,12 @@ import InitialPage from "./InitialPage";
 
 export default function App() {
   return (
-    <>
+    <Router>
       <GlobalStyleReset />
       <GlobalStyle />
-      <Router>
-        <Routes>
-          <Route path="/" element={<InitialPage />} />
-        </Routes>
-      </Router>
-    </>
+      <Routes>
+        <Route path="/main" element={<InitialPage />} />
+      </Routes>
+    </Router>
   );
 }

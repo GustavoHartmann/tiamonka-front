@@ -3,16 +3,16 @@ import styled from "styled-components";
 import { LIGHTER_THEME_COLOR, THEME_COLOR, WHITE } from "../assets/constants";
 
 const PageHeader = () => {
-  localStorage.setItem("authToken", "A"); //TODO este localStorage deve ser setado na tela de login
+  localStorage.setItem("authToken", ""); //TODO este localStorage deve ser setado na tela de login
 
   const authToken = localStorage.getItem("authToken");
 
   const username = "Pedro"; //TODO este username deve ser recebido dinamicamente a partir do login do usuario
 
   const prodcutList = [
-    { productCategory: "Bolos Fofos", CategoryRoute: "products/bolosfofos" },
-    { productCategory: "Bolos Vulcão", CategoryRoute: "products/bolosvulcao" },
-    { productCategory: "Biscoitos", CategoryRoute: "biscoitos" },
+    { productCategory: "Bolos Fofos", categoryRoute: "products/bolosfofos" },
+    { productCategory: "Bolos Vulcão", categoryRoute: "products/bolosvulcao" },
+    { productCategory: "Biscoitos", categoryRoute: "products/biscoitos" },
   ]; //TODO esta lista de produtos deve ser recebida dinamicamente pelo BackEnd
 
   return (
@@ -26,7 +26,7 @@ const PageHeader = () => {
           </ProductsDiv>
           <DropdownCategoriesMenu>
             {prodcutList.map((obj) => {
-              return <Link to={obj.CategoryRoute}>{obj.productCategory}</Link>;
+              return <Link to={obj.categoryRoute}>{obj.productCategory}</Link>;
             })}
           </DropdownCategoriesMenu>
         </DropdownProductsMenu>
@@ -37,7 +37,7 @@ const PageHeader = () => {
           src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/f80861107612119.5faafcf40b849.jpg"
         ></img>
       </Link>
-      {authToken ? (
+      {!authToken ? (
         <RightMenu>
           <Link to="/signin">Faça Login</Link>
           <Link to="/signup">Cadastre-se</Link>
