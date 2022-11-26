@@ -82,6 +82,8 @@ const FormContainer = styled.form`
       top: 15px;
       right: 15px;
       z-index: 1;
+
+      cursor: pointer;
     }
   }
 `;
