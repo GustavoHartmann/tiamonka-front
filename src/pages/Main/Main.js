@@ -31,7 +31,7 @@ const MainPage = () => {
       <CategorysMenu>
         {categoriesList.map((categoryObj, index) => {
           return (
-            <Link to={`products/${categoryObj.categoryRoute}`}>
+            <Link to={`/category/${categoryObj.categoryRoute}`}>
               <CategoryDiv key={index}>
                 <img
                   alt={`${categoryObj.productCategory} category`}
