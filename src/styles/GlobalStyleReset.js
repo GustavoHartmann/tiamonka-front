@@ -29,6 +29,7 @@ footer, header, hgroup, menu, nav, section {
 
 *{
     box-sizing: border-box;
+	text-decoration: none;
 }
 
 body {
