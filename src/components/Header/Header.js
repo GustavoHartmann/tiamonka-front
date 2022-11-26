@@ -46,9 +46,9 @@ const PageHeader = () => {
             <DownArrow />
           </ProductsDiv>
           <DropdownCategoriesMenu>
-            {productList.map((obj) => {
+            {productList.map((obj, index) => {
               return (
-                <Link to={`products/${obj.categoryRoute}`}>
+                <Link key={index} to={`products/${obj.categoryRoute}`}>
                   {obj.productCategory}
                 </Link>
               );

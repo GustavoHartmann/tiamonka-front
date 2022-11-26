@@ -32,6 +32,13 @@ export const TopBar = styled.div`
       color: ${LIGHTER_THEME_COLOR};
     }
 
+    p {
+      color: ${WHITE};
+
+      font-size: 17px;
+      font-weight: 700;
+    }
+
     text-decoration: none;
   }
 `;
@@ -92,7 +99,7 @@ export const DropdownCategoriesMenu = styled.div`
 
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0.5s, opacity 0.5s linear;
+  transition: visibility 0.3s, opacity 0.3s linear;
 
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -126,19 +133,10 @@ export const Cart = styled.div`
   align-items: center;
 
   :hover {
-    a,
+    p,
     ion-icon {
       color: ${LIGHTER_THEME_COLOR};
     }
-  }
-
-  a {
-    color: ${WHITE};
-
-    font-size: 17px;
-    font-weight: 700;
-
-    text-decoration: none;
   }
 
   ion-icon {
