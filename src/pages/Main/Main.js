@@ -10,7 +10,7 @@ const MainPage = () => {
   useEffect(() => {
     async function getCategoriesData() {
       try {
-        const response = await axios.get("http://localhost:5000/main");
+        const response = await axios.get("https://tiamonka.onrender.com/main");
 
         setCategoriesList(response.data);
       } catch (error) {
@@ -31,8 +31,8 @@ const MainPage = () => {
       <CategorysMenu>
         {categoriesList.map((categoryObj, index) => {
           return (
-            <Link to={`/category/${categoryObj.categoryRoute}`}>
-              <CategoryDiv key={index}>
+            <Link key={index} to={`/category/${categoryObj.categoryRoute}`}>
+              <CategoryDiv>
                 <img
                   alt={`${categoryObj.productCategory} category`}
                   src={categoryObj.backgroundImage}
