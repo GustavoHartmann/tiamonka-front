@@ -13,7 +13,7 @@ import {
 } from "./Header.style";
 
 const PageHeader = () => {
-  localStorage.setItem("authToken", "a"); //TODO este localStorage deve ser setado na tela de login
+  localStorage.setItem("authToken", ""); //TODO este localStorage deve ser setado na tela de login
 
   const authToken = localStorage.getItem("authToken");
 
@@ -24,7 +24,7 @@ const PageHeader = () => {
   useEffect(() => {
     async function getProductsData() {
       try {
-        const response = await axios.get("http://localhost:5000/main");
+        const response = await axios.get("https://tiamonka.onrender.com/main");
 
         setProductList(response.data);
       } catch (error) {
