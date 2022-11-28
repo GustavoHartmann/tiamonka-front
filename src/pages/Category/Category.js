@@ -67,7 +67,7 @@ const Category = () => {
         },
       };
       await axios.post(
-        "http://localhost:5000/cart",
+        "https://tiamonka.onrender.com/cart",
         { productId: productId },
         postConfig
       );

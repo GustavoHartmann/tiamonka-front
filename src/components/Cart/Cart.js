@@ -28,7 +28,7 @@ const Cart = () => {
       };
       try {
         const response = await axios.get(
-          "http://localhost:5000/cart",
+          "https://tiamonka.onrender.com/cart",
           getConfig
         );
         setCartList(response.data);
@@ -41,10 +41,11 @@ const Cart = () => {
     getCartData();
   }, [cartChange]);
 
-  const changeQuantity = async (type, objId) => {
+  const changeQuantity = async (type, objId, previousQuantity) => {
     const putData = {
       changeType: type,
       entryId: objId,
+      previousQuantity: previousQuantity,
     };
 
     const putConfig = {
@@ -53,7 +54,7 @@ const Cart = () => {
       },
     };
 
-    await axios.put("http://localhost:5000/cart", putData, putConfig);
+    await axios.put("https://tiamonka.onrender.com/cart", putData, putConfig);
 
     setCartChange(!cartChange);
   };
@@ -105,13 +106,17 @@ const Cart = () => {
                       <p>{obj.productName}</p>
                       <QuantityController>
                         <button
-                          onClick={() => changeQuantity("decrease", obj._id)}
+                          onClick={() =>
+                            changeQuantity("decrease", obj._id, obj.quantity)
+                          }
                         >
                           -
                         </button>
                         <p>{obj.quantity}</p>
                         <button
-                          onClick={() => changeQuantity("increase", obj._id)}
+                          onClick={() =>
+                            changeQuantity("increase", obj._id, obj.quantity)
+                          }
                         >
                           +
                         </button>
