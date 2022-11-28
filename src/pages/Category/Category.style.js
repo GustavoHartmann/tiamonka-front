@@ -6,14 +6,22 @@ export const Screen = styled.div`
   flex-direction: column;
   align-items: center;
 
-  h3 {
+  width: 100%;
+  height: 100vh;
+
+  overflow: ${(props) => (props.cartVisibility ? "hidden" : "auto")};
+  padding-right: ${(props) => (props.cartVisibility ? "17px" : "")};
+
+  > h3 {
     font-weight: 700;
-    font-size: 50px;
+    font-size: 60px;
+
+    font-family: "Nerko One", cursive;
 
     margin-top: 130px;
   }
 
-  p {
+  > p {
     font-size: 18px;
     line-height: 80px;
     font-weight: 500;

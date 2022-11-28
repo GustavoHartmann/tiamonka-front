@@ -1,6 +1,6 @@
 import Header from "../../components/Header/Header";
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import {
   ProductDetails,
@@ -8,11 +8,17 @@ import {
   ProductsMenu,
   Screen,
 } from "./Category.style";
+import { AuthContext } from "../../contexts/AuthContext";
+import { CartContext } from "../../contexts/cart.context";
 
 const Category = () => {
   const { category } = useParams();
 
   const [categoryData, setCategoryData] = useState([]);
+
+  const { token } = useContext(AuthContext);
+  const { cartChange, setCartChange, cartVisibility } = useContext(CartContext);
+  console.log(token);
 
   useEffect(() => {
     async function getCategoryData() {
@@ -22,6 +28,7 @@ const Category = () => {
         );
 
         setCategoryData(productsResponse.data);
+        setCartChange(!cartChange);
       } catch (error) {
         console.log(error);
         alert(error);
@@ -52,19 +59,34 @@ const Category = () => {
 
   console.log(categoryData);
 
-  const addToCart = (event) => {
-    console.log(event);
+  const addToCart = async (productId) => {
+    try {
+      const postConfig = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      await axios.post(
+        "https://tiamonka.onrender.com/cart",
+        { productId: productId },
+        postConfig
+      );
+    } catch (error) {
+      alert(error);
+    }
+
+    setCartChange(!cartChange);
   };
 
   return (
-    <Screen>
+    <Screen cartVisibility={cartVisibility}>
       <Header />
       <GetCategoryTitle />
       <ion-icon name="flower-outline"></ion-icon>
       <ProductsMenu>
         {categoryData.map((productObj, index) => {
           return (
-            <ProductDiv>
+            <ProductDiv key={index}>
               <img
                 alt={`${productObj.productName} category`}
                 src={productObj.image}
