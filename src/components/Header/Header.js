@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Cart from "../Cart/Cart";
 import {
-  Cart,
   DownArrow,
   DropdownCategoriesMenu,
   DropdownProductsMenu,
@@ -13,7 +13,7 @@ import {
 } from "./Header.style";
 
 const PageHeader = () => {
-  localStorage.setItem("authToken", ""); //TODO este localStorage deve ser setado na tela de login
+  localStorage.setItem("authToken", "a"); //TODO este localStorage deve ser setado na tela de login
 
   const authToken = localStorage.getItem("authToken");
 
@@ -56,12 +56,10 @@ const PageHeader = () => {
           </DropdownCategoriesMenu>
         </DropdownProductsMenu>
       </LeftMenu>
-      <Link to="/">
-        <img
-          alt="Logo da loja tia monka"
-          src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/f80861107612119.5faafcf40b849.jpg"
-        ></img>
-      </Link>
+      <img
+        alt="Logo da loja tia monka"
+        src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/f80861107612119.5faafcf40b849.jpg"
+      ></img>
       <RightMenu>
         {!authToken ? (
           <>
@@ -71,12 +69,7 @@ const PageHeader = () => {
         ) : (
           <>
             <Link to="/profile">Bem vindo(a), {username}!</Link>
-            <Link to="/cart">
-              <Cart>
-                <p>Carrinho</p>
-                <ion-icon name="cart-outline"></ion-icon>
-              </Cart>
-            </Link>
+            <Cart />
           </>
         )}
       </RightMenu>

@@ -14,7 +14,7 @@ export const TopBar = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  img {
+  > img {
     width: 350px;
 
     margin-top: 80px;
@@ -126,21 +126,4 @@ export const LeftMenu = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 100%;
-`;
-
-export const Cart = styled.div`
-  display: flex;
-  align-items: center;
-
-  :hover {
-    p,
-    ion-icon {
-      color: ${LIGHTER_THEME_COLOR};
-    }
-  }
-
-  ion-icon {
-    font-size: 30px;
-    color: ${WHITE};
-  }
 `;

@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { CategoryDiv, CategorysMenu, Screen } from "./Main.style";
 import axios from "axios";
+import { AuthContext } from "../../contexts/AuthContext";
+import { CartContext } from "../../contexts/cart.context";
 
 const MainPage = () => {
   const [categoriesList, setCategoriesList] = useState([]);
+
+  const { setToken } = useContext(AuthContext);
+  const { cartVisibility } = useContext(CartContext);
 
   useEffect(() => {
     async function getCategoriesData() {
@@ -20,10 +25,11 @@ const MainPage = () => {
     }
 
     getCategoriesData();
+    setToken("c412a0b7-766c-4111-9f8c-176fa043c865");
   }, []);
 
   return (
-    <Screen>
+    <Screen cartVisibility={cartVisibility}>
       <Header />
       <h3>Conheça nossos produtos</h3>
       <p>Bolos e biscoitos feitos com muito amor e oração.</p>
